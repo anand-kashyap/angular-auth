@@ -12,8 +12,8 @@ import { FormField } from '../models/login.model';
 
 export class LoginComponent implements OnInit {
   @Input() fields: FormField[] = [
-    new FormField('email', [Validators.required, Validators.email]),
-    new FormField('password', [Validators.required], 'password')
+    new FormField('email', ['required', 'email']),
+    new FormField('password', ['required'], 'password')
   ];
   @Input() error: string;
   @Output() out = new EventEmitter<any>();
