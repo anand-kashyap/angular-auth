@@ -4,16 +4,10 @@
         <div class="card-header bg-primary text-light">Login</div>
         <div class="card-body">
           <form [formGroup]="loginForm" (ngSubmit)="login()">
-            <div class="form-group">
-              <label>E-mail</label>
-              <input class="form-control" [ngClass]="{'is-invalid': isInvalid('email')}" formControlName="email" placeholder="Your email" autocomplete="email">
-              <div class="invalid-feedback" *ngIf="isInvalid('email')">{{getFormErrors('email')}}
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Password</label>
-              <input type="password" class="form-control" autocomplete="password" [ngClass]="{'is-invalid': isInvalid('password')}" formControlName="password" placeholder="Your Password">
-              <div class="invalid-feedback" *ngIf="isInvalid('password')">{{getFormErrors('password')}}
+            <div class="form-group" *ngFor="let f of fields">
+              <label>{{f.label | titlecase}}</label>
+              <input class="form-control" [ngClass]="{'is-invalid': isInvalid(f.name)}" [formControlName]="f.name" [type]="f.type" [placeholder]="'Your '+f.name" [autocomplete]="f.name">
+              <div class="invalid-feedback" *ngIf="isInvalid(f.name)">{{getFormErrors(f.name)}}
               </div>
             </div>
             <div>
