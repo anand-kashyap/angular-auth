@@ -6,13 +6,13 @@
           <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="form-group">
               <label>E-mail</label>
-              <input class="form-control" [ngClass]="{'is-invalid': isInvalid('email')}" formControlName="email" placeholder="{{ 'login.emailPlaceHolder'}}" autocomplete="email">
+              <input class="form-control" [ngClass]="{'is-invalid': isInvalid('email')}" formControlName="email" placeholder="Your email" autocomplete="email">
               <div class="invalid-feedback" *ngIf="isInvalid('email')">{{getFormErrors('email')}}
               </div>
             </div>
             <div class="form-group">
               <label>Password</label>
-              <input type="password" class="form-control" autocomplete="password" [ngClass]="{'is-invalid': isInvalid('password')}" formControlName="password" placeholder="{{ 'login.pswPlaceHolder'}}">
+              <input type="password" class="form-control" autocomplete="password" [ngClass]="{'is-invalid': isInvalid('password')}" formControlName="password" placeholder="Your Password">
               <div class="invalid-feedback" *ngIf="isInvalid('password')">{{getFormErrors('password')}}
               </div>
             </div>
@@ -22,7 +22,7 @@
               </div>
               <button type="submit" class="btn btn-outline-primary d-inline-block mr-2">Login</button>
               <a [routerLink]="['/register']" class="btn btn-primary">Register</a>
-              <a [routerLink]="['/forgot-password']" class="float-right mt-2">Forgot Password?</a>
+              <a [routerLink]="['/forgot-password']" class="text-primary float-right mt-2">Forgot Password?</a>
             </div>
             <div class="invalid-feedback mt-3 d-block" *ngIf="errorMessage">{{errorMessage}}</div>
           </form>
