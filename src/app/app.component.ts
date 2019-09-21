@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormField, IFormField, Validators } from './models/login.model';
+import { FormField } from './models/login.model';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +8,14 @@ import { FormField, IFormField, Validators } from './models/login.model';
 })
 export class AppComponent {
   title = 'angular-auth';
-  fields: IFormField[] = [
-    {
-      name: 'email',
-      type: 'text',
-      label: 'Email',
-      value: '',
-      validations: [Validators.required, Validators.email]
-    },
-    new FormField('password', [Validators.required], 'password')
+  err = '';
+  fields: FormField[] = [
+    new FormField('email', ['required', 'email'], 'e-mail'),
+    new FormField('password', ['required'], 'password', 'password')
   ];
 
   externaLogin(vals) {
     console.log('ex login called', vals);
+    this.err = 'working err';
   }
 }

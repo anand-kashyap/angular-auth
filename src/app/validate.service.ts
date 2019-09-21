@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { FormField, ValidMessages } from './models/login.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,23 @@ export class ValidateService {
   constructor() { }
 
   // Check Form Control Validation Errors
-  getErrors(formControl: string, formGroup: FormGroup, validations): string {
-    const errorField = validations[formControl];
-
-    for (const err of errorField) {
-      if (formGroup.get(formControl).hasError(err.type)) {
-        return 'formValid.' + err.message;
+  getErrors(formControl: string, formGroup: FormGroup, fields: FormField[]): string {
+    let errorField: FormField;
+    for (const f of fields) {
+      if (f.name === formControl) {
+        errorField = f;
+        break;
+      }
+    }
+    if (errorField) {
+      for (const err of errorField.validations) {
+        if (formGroup.get(formControl).hasError(err)) {
+          let error = ValidMessages.m[err];
+          if (err === 'email') {
+            error = ValidMessages.m.invalid;
+          }
+          return errorField.label + ' ' + error;
+        }
       }
     }
   }

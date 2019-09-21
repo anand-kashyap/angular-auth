@@ -1,6 +1,6 @@
 <div class="row mt-4">
     <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-sm-10 offset-sm-1">
-      <div class="card mx-auto w-75">
+      <div class="card mx-auto w-75" *ngIf="loginForm">
         <div class="card-header bg-primary text-light">Login</div>
         <div class="card-body">
           <form [formGroup]="loginForm" (ngSubmit)="login()">
@@ -18,7 +18,7 @@
               <a [routerLink]="['/register']" class="btn btn-primary">Register</a>
               <a [routerLink]="['/forgot-password']" class="text-primary float-right mt-2">Forgot Password?</a>
             </div>
-            <div class="invalid-feedback mt-3 d-block" *ngIf="errorMessage">{{errorMessage}}</div>
+            <div class="invalid-feedback mt-3 d-block" *ngIf="error">{{error}}</div>
           </form>
         </div>
       </div>
