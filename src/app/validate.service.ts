@@ -20,9 +20,11 @@ export class ValidateService {
     }
     if (errorField) {
       for (const errF of errorField.validations) {
-        let err = errF;
-        if (typeof err === 'object') {
-          err = err[0];
+        let err = '';
+        if (typeof errF === 'object') {
+          err += errF[0];
+        } else {
+          err += errF;
         }
         if (formGroup.get(formControl).hasError(err)) {
           let error = ValidMessages.m[err];

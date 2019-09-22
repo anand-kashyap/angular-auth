@@ -3,8 +3,8 @@ export class FormField {
   type?: string;
   label?: string;
   value?: string | number;
-  validations?: string[] | Array<string>[];
-  constructor(name: string, validations = [], label = name, type = 'text', value = '') {
+  validations?: Validator[];
+  constructor(name: string, validations: Validator[] = [], label = name, type = 'text', value = '') {
     this.name = name;
     this.type = type;
     this.label = label;

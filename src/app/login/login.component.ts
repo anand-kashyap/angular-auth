@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit {
       }
       loginFields[f.name] = [f.value, vArr];
     }
-    console.log(loginFields);
     this.loginForm = this.fb.group(loginFields);
   }
 
