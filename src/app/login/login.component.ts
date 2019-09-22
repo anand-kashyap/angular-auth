@@ -31,7 +31,11 @@ export class LoginComponent implements OnInit {
     for (const f of this.fields) {
       const vArr = [];
       for (const v of f.validations) {
-        vArr.push(Validators[v]);
+        if (typeof v === 'object') {
+          vArr.push(Validators[v[0]](v[1]));
+        } else {
+          vArr.push(Validators[v]);
+        }
       }
       loginFields[f.name] = [f.value, vArr];
     }

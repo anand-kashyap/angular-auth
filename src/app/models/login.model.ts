@@ -3,7 +3,7 @@ export class FormField {
   type?: string;
   label?: string;
   value?: string | number;
-  validations?: string[];
+  validations?: string[] | Array<string>[];
   constructor(name: string, validations = [], label = name, type = 'text', value = '') {
     this.name = name;
     this.type = type;
@@ -13,9 +13,18 @@ export class FormField {
   }
 }
 
+export class Validator {
+  public static required = 'required';
+  public static email = 'email';
+  public static pattern(regEx: RegExp) {
+    return ['pattern', regEx];
+  }
+}
+
 export class ValidMessages {
   public static m = {
     required: 'is required',
     invalid: 'is invalid',
+    pattern: 'does not match pattern'
   };
 }

@@ -5,7 +5,7 @@
         <div class="card-body">
           <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="form-group" *ngFor="let f of fields">
-              <label>{{f.label | titlecase}}</label>
+              <label>{{f.label}}</label>
               <input class="form-control" [ngClass]="{'is-invalid': isInvalid(f.name)}" [formControlName]="f.name" [type]="f.type" [placeholder]="'Your '+f.name" [autocomplete]="f.name">
               <div class="invalid-feedback" *ngIf="isInvalid(f.name)">{{getFormErrors(f.name)}}
               </div>

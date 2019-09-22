@@ -19,11 +19,18 @@ export class ValidateService {
       }
     }
     if (errorField) {
-      for (const err of errorField.validations) {
+      for (const errF of errorField.validations) {
+        let err = errF;
+        if (typeof err === 'object') {
+          err = err[0];
+        }
         if (formGroup.get(formControl).hasError(err)) {
           let error = ValidMessages.m[err];
           if (err === 'email') {
             error = ValidMessages.m.invalid;
+          }
+          if (err === 'pattern') {
+            error += ' ' + errF[1];
           }
           return errorField.label + ' ' + error;
         }
