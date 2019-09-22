@@ -32,13 +32,21 @@ export class LoginComponent implements OnInit {
       const vArr = [];
       for (const v of f.validations) {
         if (typeof v === 'object') {
-          vArr.push(Validators[v[0]](v[1]));
+          let vName = v[0];
+          if (vName === 'minlength') {
+            vName = 'minLength';
+          }
+          if (vName === 'maxlength') {
+            vName = 'maxLength';
+          }
+          vArr.push(Validators[vName](v[1]));
         } else {
           vArr.push(Validators[v]);
         }
       }
       loginFields[f.name] = [f.value, vArr];
     }
+    console.log(loginFields);
     this.loginForm = this.fb.group(loginFields);
   }
 

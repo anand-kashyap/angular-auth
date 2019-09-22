@@ -32,6 +32,9 @@ export class ValidateService {
           if (err === 'pattern') {
             error += ' ' + errF[1];
           }
+          if (err === 'minlength' || err === 'maxlength') {
+            error = ValidMessages.m[err](parseInt(errF[1], 10));
+          }
           return errorField.label + ' ' + error;
         }
       }

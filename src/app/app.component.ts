@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'angular-auth';
   err = '';
   fields: FormField[] = [
-    new FormField('email', [Validator.required, Validator.email], 'E-mail'),
+    new FormField('email', [Validator.required, Validator.minlength(4)], 'E-mail'),
     new FormField('agreement', [Validator.required, Validator.pattern(/[0-9]/)], 'Agreement Number'),
     new FormField('password', [Validator.required], 'Password', 'password')
   ];
