@@ -6,7 +6,15 @@
           <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="form-group" *ngFor="let f of fields">
               <label>{{f.label}}</label>
-              <input class="form-control" [ngClass]="{'is-invalid': isInvalid(f.name)}" [formControlName]="f.name" [type]="f.type" [placeholder]="'Your '+f.name" [autocomplete]="f.name">
+              <ng-container [ngSwitch]="checkVal(f.type)">
+                <select *ngSwitchCase="'array'" class="form-control" [formControlName]="f.name" [ngClass]="{'is-invalid': isInvalid(f.name)}">
+                  <option *ngFor="let op of f.type">{{op}}</option>
+                </select>
+              <textarea *ngSwitchCase="'textbox'" [formControlName]="f.name" class="form-control" [ngClass]="{'is-invalid': isInvalid(f.name)}">
+                  {{f.value}}
+                </textarea>
+                <input *ngSwitchDefault class="form-control" [ngClass]="{'is-invalid': isInvalid(f.name)}" [formControlName]="f.name" [type]="f.type" [placeholder]="'Your '+f.name" [autocomplete]="f.name" [value]="f.value">
+              </ng-container>
               <div class="invalid-feedback" *ngIf="isInvalid(f.name)">{{getFormErrors(f.name)}}
               </div>
             </div>

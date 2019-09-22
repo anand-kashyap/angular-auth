@@ -1,10 +1,17 @@
+export class FieldTypes {
+  public static text = 'text';
+  public static textbox = 'textbox';
+  public static password = 'password';
+  public static dropdown = (options: string[]) => options;
+}
+
 export class FormField {
   name: string;
-  type?: string;
+  type?: FieldTypes;
   label?: string;
   value?: string | number;
   validations?: Validator[];
-  constructor(name: string, validations: Validator[] = [], label = name, type = 'text', value = '') {
+  constructor(name: string, validations: Validator[] = [], label = name, type: FieldTypes = FieldTypes.text, value = '') {
     this.name = name;
     this.type = type;
     this.label = label;

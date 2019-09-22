@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder , Validators } from '@angular/forms';
 
 import { ValidateService } from './../validate.service';
-import { FormField } from '../models/login.model';
+import { FormField, FieldTypes } from '../models/login.model';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   @Input() error: string;
   @Output() out = new EventEmitter<any>();
   loginForm: FormGroup;
+  fieldTypes = FieldTypes;
 
   constructor(private validateService: ValidateService, private fb: FormBuilder) { }
 
@@ -26,6 +27,15 @@ export class LoginComponent implements OnInit {
     this.convertToControls();
   }
 
+  checkVal(val) {
+    if (val instanceof Array) {
+      return 'array';
+    } else if (val === 'textbox') {
+      return 'textbox';
+    } else {
+      return 'string';
+    }
+  }
   convertToControls() {
     const loginFields = {};
     for (const f of this.fields) {
