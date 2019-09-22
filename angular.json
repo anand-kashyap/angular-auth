@@ -147,6 +147,41 @@
           }
         }
       }
+    },
+    "dynamic-login": {
+      "projectType": "library",
+      "root": "projects/dynamic-login",
+      "sourceRoot": "projects/dynamic-login/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/dynamic-login/tsconfig.lib.json",
+            "project": "projects/dynamic-login/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dynamic-login/src/test.ts",
+            "tsConfig": "projects/dynamic-login/tsconfig.spec.json",
+            "karmaConfig": "projects/dynamic-login/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/dynamic-login/tsconfig.lib.json",
+              "projects/dynamic-login/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "angular-auth"

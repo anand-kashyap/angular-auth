@@ -1,16 +1,14 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { FormGroup, FormBuilder , Validators } from '@angular/forms';
-
-import { ValidateService } from './../validate.service';
-import { FormField } from '../models/login.model';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormField } from './model';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DynamicLoginService } from './dynamic-login.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'lib-dynamic-login',
+  templateUrl: './dynamic-login.component.html',
+  styleUrls: ['./dynamic-login.component.scss']
 })
-
-export class LoginComponent implements OnInit {
+export class DynamicLoginComponent implements OnInit {
   @Input() fields: FormField[] = [
     new FormField('email', ['required', 'email']),
     new FormField('password', ['required'], 'password')
@@ -19,7 +17,7 @@ export class LoginComponent implements OnInit {
   @Output() out = new EventEmitter<any>();
   loginForm: FormGroup;
 
-  constructor(private validateService: ValidateService, private fb: FormBuilder) { }
+  constructor(private validateService: DynamicLoginService, private fb: FormBuilder) { }
 
   ngOnInit() {
     console.log(this.fields);

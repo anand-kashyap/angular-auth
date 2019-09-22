@@ -38,7 +38,7 @@ export class ValidMessages {
     min: 'must be atleast',
     max: 'must be greater than',
     minlength(n: number)  {return `must be atleast ${n} digits/characters`; },
-    maxlength(n: number)  {return `must be greater than ${n} digits/characters`; },
+    maxlength(n: number) {return `must be greater than ${n} digits/characters`; },
     required: 'is required',
     invalid: 'is invalid',
     pattern: 'does not match pattern'

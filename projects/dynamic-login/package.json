@@ -1,0 +1,12 @@
+{
+  "name": "dynamic-login",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^8.2.7",
+    "@angular/core": "^8.2.7",
+    "@angular/forms": "~8.2.7",
+    "bootstrap": "4.1.1",
+    "ngx-bootstrap": "^5.1.2",
+    "rxjs": "~6.4.0"
+  }
+}
