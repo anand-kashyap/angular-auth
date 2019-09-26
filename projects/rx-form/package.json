@@ -1,0 +1,9 @@
+{
+  "name": "rx-form",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^8.2.7",
+    "@angular/core": "^8.2.7",
+    "ngx-bootstrap": "^5.1.2"
+  }
+}

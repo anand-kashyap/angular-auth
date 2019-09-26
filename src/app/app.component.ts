@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 // import { FormField, Validator } from 'dynamic-login';
-import { FormField, Validator, FieldTypes, Config } from './models/form.model';
+// import { FormField, Validator, FieldTypes, Config } from './models/form.model';
+import { FormField, Validator, FieldTypes, Config } from 'rx-form';
 
 @Component({
   selector: 'app-root',

@@ -19,11 +19,11 @@
       "dom"
     ],
     "paths": {
-      "dynamic-login": [
-        "dist/dynamic-login"
+      "rx-form": [
+        "dist/rx-form"
       ],
-      "dynamic-login/*": [
-        "dist/dynamic-login/*"
+      "rx-form/*": [
+        "dist/rx-form/*"
       ]
     }
   },

@@ -4,28 +4,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonsModule } from 'ngx-bootstrap';
-import { RxFormModule } from 'rx-form';
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { RxformComponent } from './rxform/rxform.component';
+import { RxFormComponent } from './rx-form.component';
+import { RxFormRoutingModule } from './rx-form-routing.module';
 
 @NgModule({
+  declarations: [RxFormComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    RxFormRoutingModule,
     ButtonsModule.forRoot(),
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    RxFormModule
+    BrowserAnimationsModule
   ],
-  declarations: [
-    AppComponent,
-    RxformComponent,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  exports: [RxFormComponent]
 })
-export class AppModule { }
+export class RxFormModule { }
