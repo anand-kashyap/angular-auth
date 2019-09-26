@@ -1,16 +1,14 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { FormGroup, FormBuilder , Validators } from '@angular/forms';
-
-import { ValidateService } from './../validate.service';
-import { FormField, FieldTypes, Config, Link } from '../models/login.model';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormField, Config, Link, FieldTypes } from '../models/form.model';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ValidateService } from '../validate.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-rxform',
+  templateUrl: './rxform.component.html',
+  styleUrls: ['./rxform.component.scss']
 })
-
-export class LoginComponent implements OnInit {
+export class RxformComponent implements OnInit {
   @Input() fields: FormField[] = [
     new FormField('email', ['required', 'email']),
     new FormField('password', ['required'], 'password')
@@ -23,7 +21,7 @@ export class LoginComponent implements OnInit {
   @Input() error: string;
   @Output() btnClick = new EventEmitter<any>();
   @Output() out = new EventEmitter<any>();
-  loginForm: FormGroup;
+  form: FormGroup;
   fieldTypes = FieldTypes;
 
   constructor(private validateService: ValidateService, private fb: FormBuilder) { }
@@ -47,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   convertToControls() {
-    const loginFields = {};
+    const formFields = {};
     for (const f of this.fields) {
       const vArr = [];
       for (const v of f.validations) {
@@ -64,37 +62,36 @@ export class LoginComponent implements OnInit {
           vArr.push(Validators[v]);
         }
       }
-      loginFields[f.name] = [f.value, vArr];
+      formFields[f.name] = [f.value, vArr];
     }
-    this.loginForm = this.fb.group(loginFields);
+    this.form = this.fb.group(formFields);
   }
 
   getFormErrors(controlName: string): string {
-    return this.validateService.getErrors(controlName, this.loginForm, this.fields);
+    return this.validateService.getErrors(controlName, this.form, this.fields);
   }
 
   isInvalid(controlName: string): boolean {
-    return this.validateService.isControlInvalid(this.loginForm, controlName);
+    return this.validateService.isControlInvalid(this.form, controlName);
   }
 
-  login() {
-    if (this.loginForm.valid) {
-      this.loginForm.disable();
+  submitForm() {
+    if (this.form.valid) {
+      this.form.disable();
       // make api call
-      this.out.emit(this.loginForm.value);
-      this.loginForm.enable();
+      this.out.emit(this.form.value);
+      this.form.enable();
     } else {
-      this.validateService.markFieldsAsDirty(this.loginForm);
+      this.validateService.markFieldsAsDirty(this.form);
     }
   }
 
   otherClick() {
     if (this.otherButton.outData) {
       if (this.otherButton.outData === 'formGroup') {
-        return this.btnClick.emit(this.loginForm);
+        return this.btnClick.emit(this.form);
       }
     }
     return this.btnClick.emit();
   }
-
 }

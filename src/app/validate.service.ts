@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormField, ValidMessages } from './models/login.model';
+import { FormField, ValidMessages } from './models/form.model';
 
 @Injectable({
   providedIn: 'root'

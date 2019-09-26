@@ -1,0 +1,34 @@
+<div class="row mt-4">
+  <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-sm-10 offset-sm-1">
+    <div class="card mx-auto w-75" *ngIf="form">
+      <div class="card-header bg-primary text-light">{{config.name}}</div>
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+          <div class="form-group" *ngFor="let f of fields">
+            <label>{{f.label}}</label>
+            <ng-container [ngSwitch]="checkVal(f.type)">
+              <select [value]="f.value" *ngSwitchCase="'array'" class="form-control" [formControlName]="f.name" [ngClass]="{'is-invalid': isInvalid(f.name)}">
+                <option *ngFor="let op of f.type">{{op}}</option>
+              </select>
+            <textarea *ngSwitchCase="'textbox'" [formControlName]="f.name" class="form-control" [ngClass]="{'is-invalid': isInvalid(f.name)}">
+                {{f.value}}
+              </textarea>
+              <input *ngSwitchDefault class="form-control" [ngClass]="{'is-invalid': isInvalid(f.name)}" [formControlName]="f.name" [type]="f.type" [placeholder]="'Your '+f.name" [autocomplete]="f.name" [value]="f.value">
+            </ng-container>
+            <div class="invalid-feedback" *ngIf="isInvalid(f.name)">{{getFormErrors(f.name)}}
+            </div>
+          </div>
+          <div>
+            <div class="spinner-border text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <button type="submit" class="btn btn-outline-primary d-inline-block mr-2">{{config.submitLabel}}</button>
+            <button type="button" *ngIf="otherButton" (click)="otherClick()" class="btn btn-primary">{{otherButton.label}}</button>
+            <a [routerLink]="[link.url]" *ngIf="link" class="text-primary float-right mt-2">{{link.label}}</a>
+          </div>
+          <div class="invalid-feedback mt-3 d-block" *ngIf="error">{{error}}</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
