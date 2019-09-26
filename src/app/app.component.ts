@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 // import { FormField, Validator } from 'dynamic-login';
-import { FormField, Validator, FieldTypes } from './models/login.model';
+import { FormField, Validator, FieldTypes, Config } from './models/login.model';
 
 @Component({
   selector: 'app-root',
@@ -17,9 +17,14 @@ export class AppComponent {
     new FormField('password', [Validator.required], 'Password', FieldTypes.password),
     new FormField('textarea', [Validator.required], 'Test textarea', FieldTypes.textbox)
   ];
+  config: Config = {name: 'Login'};
 
   externaLogin(vals) {
     console.log('ex login called', vals);
     this.err = 'working err';
+  }
+
+  otherClick(formgroup) {
+    console.log(formgroup);
   }
 }

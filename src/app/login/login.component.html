@@ -1,7 +1,7 @@
 <div class="row mt-4">
     <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-sm-10 offset-sm-1">
       <div class="card mx-auto w-75" *ngIf="loginForm">
-        <div class="card-header bg-primary text-light">Login</div>
+        <div class="card-header bg-primary text-light">{{config.name}}</div>
         <div class="card-body">
           <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="form-group" *ngFor="let f of fields">
@@ -22,9 +22,9 @@
               <div class="spinner-border text-primary" role="status">
                 <span class="sr-only">Loading...</span>
               </div>
-              <button type="submit" class="btn btn-outline-primary d-inline-block mr-2">Login</button>
-              <a [routerLink]="['/register']" class="btn btn-primary">Register</a>
-              <a [routerLink]="['/forgot-password']" class="text-primary float-right mt-2">Forgot Password?</a>
+              <button type="submit" class="btn btn-outline-primary d-inline-block mr-2">{{config.submitLabel}}</button>
+              <button type="button" *ngIf="otherButton" (click)="otherClick()" class="btn btn-primary">{{otherButton.label}}</button>
+              <a [routerLink]="[link.url]" *ngIf="link" class="text-primary float-right mt-2">{{link.label}}</a>
             </div>
             <div class="invalid-feedback mt-3 d-block" *ngIf="error">{{error}}</div>
           </form>

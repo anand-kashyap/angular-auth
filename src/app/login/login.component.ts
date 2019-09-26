@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder , Validators } from '@angular/forms';
 
 import { ValidateService } from './../validate.service';
-import { FormField, FieldTypes } from '../models/login.model';
+import { FormField, FieldTypes, Config, Link } from '../models/login.model';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,13 @@ export class LoginComponent implements OnInit {
     new FormField('email', ['required', 'email']),
     new FormField('password', ['required'], 'password')
   ];
+  @Input() config: Config = {name: 'Login', submitLabel: 'Login'};
+  @Input() otherButton = {label: 'Register', outData: 'formGroup'};
+  @Input() link: Link = {
+    type: 'link', label: 'Forgot Password?', url: '/forgot'
+  };
   @Input() error: string;
+  @Output() btnClick = new EventEmitter<any>();
   @Output() out = new EventEmitter<any>();
   loginForm: FormGroup;
   fieldTypes = FieldTypes;
@@ -24,10 +30,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.fields);
+    if (!this.config.submitLabel) {
+      this.config.submitLabel = 'Submit';
+    }
     this.convertToControls();
   }
 
-  checkVal(val) {
+  checkVal(val: Array<any> | string) {
     if (val instanceof Array) {
       return 'array';
     } else if (val === 'textbox') {
@@ -36,6 +45,7 @@ export class LoginComponent implements OnInit {
       return 'string';
     }
   }
+
   convertToControls() {
     const loginFields = {};
     for (const f of this.fields) {
@@ -76,6 +86,15 @@ export class LoginComponent implements OnInit {
     } else {
       this.validateService.markFieldsAsDirty(this.loginForm);
     }
+  }
+
+  otherClick() {
+    if (this.otherButton.outData) {
+      if (this.otherButton.outData === 'formGroup') {
+        return this.btnClick.emit(this.loginForm);
+      }
+    }
+    return this.btnClick.emit();
   }
 
 }

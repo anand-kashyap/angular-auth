@@ -51,3 +51,14 @@ export class ValidMessages {
     pattern: 'does not match pattern'
   };
 }
+
+export class Config {
+  name: string;
+  submitLabel?: string = name;
+}
+
+export class Link {
+  type: string;
+  label: string;
+  url: string;
+}
