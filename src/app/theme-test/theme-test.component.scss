@@ -1,0 +1,11 @@
+@import '../app.component.scss';
+
+button {
+  @include themify($themes) {
+    color: themed('textColor');
+    background-color: themed('backgroundColor');
+    &:focus{
+      box-shadow: none
+    }
+  }
+}

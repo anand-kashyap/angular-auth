@@ -9,6 +9,7 @@ import { NgRxformModule } from '@anand-kashyap/ng-rxform';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RxformComponent } from './rxform/rxform.component';
+import { ThemeTestComponent } from './theme-test/theme-test.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { RxformComponent } from './rxform/rxform.component';
   declarations: [
     AppComponent,
     RxformComponent,
+    ThemeTestComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

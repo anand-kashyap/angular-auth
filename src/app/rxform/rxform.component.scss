@@ -1,0 +1,14 @@
+@import '../app.component';
+
+.card-body {
+  @include themify($themes) {
+    background-color: themed('backgroundColor');
+    button {
+      color: themed('textColor');
+      background-color: themed('backgroundColor');
+      &:focus{
+        box-shadow: none
+      }
+    }
+  }
+}
