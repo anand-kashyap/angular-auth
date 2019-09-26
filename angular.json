@@ -147,41 +147,6 @@
           }
         }
       }
-    },
-    "rx-form": {
-      "projectType": "library",
-      "root": "projects/rx-form",
-      "sourceRoot": "projects/rx-form/src",
-      "prefix": "rx",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/rx-form/tsconfig.lib.json",
-            "project": "projects/rx-form/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/rx-form/src/test.ts",
-            "tsConfig": "projects/rx-form/tsconfig.spec.json",
-            "karmaConfig": "projects/rx-form/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/rx-form/tsconfig.lib.json",
-              "projects/rx-form/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
     }
   },
   "defaultProject": "angular-auth"

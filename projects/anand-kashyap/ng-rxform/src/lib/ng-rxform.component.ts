@@ -1,14 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormField, Config, Link, FieldTypes } from './models/form.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { RxFormService } from './rx-form.service';
+import { NgRxformService } from './ng-rxform.service';
 
 @Component({
   selector: 'rx-form',
-  templateUrl: './rx-form.component.html',
-  styleUrls: ['./rx-form.component.scss']
+  templateUrl: './ng-rxform.component.html',
+  styleUrls: ['./ng-rxform.component.scss']
 })
-export class RxFormComponent implements OnInit {
+export class NgRxformComponent implements OnInit {
   @Input() fields: FormField[] = [
     new FormField('email', ['required', 'email'], 'Email'),
     new FormField('password', ['required'], 'password', 'Password')
@@ -24,7 +24,7 @@ export class RxFormComponent implements OnInit {
   form: FormGroup;
   fieldTypes = FieldTypes;
 
-  constructor(private validateService: RxFormService, private fb: FormBuilder) { }
+  constructor(private validateService: NgRxformService, private fb: FormBuilder) { }
 
   ngOnInit() {
     console.log(this.fields);

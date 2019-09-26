@@ -8,4 +8,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class RxFormRoutingModule { }
+export class NgRxformRoutingModule { }

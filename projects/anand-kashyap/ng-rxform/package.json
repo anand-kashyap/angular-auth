@@ -1,0 +1,24 @@
+{
+  "name": "@anand-kashyap/ng-rxform",
+  "version": "0.0.2",
+  "author": "Anand Kashyap",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:anand-kashyap/angular-auth.git"
+  },
+  "description": "Dynamic reactive forms with validation messages enabled on bootstrap 4",
+  "keywords": [
+    "angular",
+    "reactive forms",
+    "reactive dynamic forms",
+    "form builder",
+    "dynamic form builder",
+    "bootstrap"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^8.2.7",
+    "@angular/core": "^8.2.7",
+    "ngx-bootstrap": "^5.1.2"
+  }
+}

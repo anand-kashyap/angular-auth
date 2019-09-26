@@ -5,20 +5,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonsModule } from 'ngx-bootstrap';
 
-import { RxFormComponent } from './rx-form.component';
-import { RxFormRoutingModule } from './rx-form-routing.module';
+import { NgRxformComponent } from './ng-rxform.component';
+import { NgRxformRoutingModule } from './ng-rxform-routing.module';
 
 @NgModule({
-  declarations: [RxFormComponent],
+  declarations: [NgRxformComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RxFormRoutingModule,
+    NgRxformRoutingModule,
     ButtonsModule.forRoot(),
     BrowserAnimationsModule
   ],
-  exports: [RxFormComponent]
+  exports: [NgRxformComponent]
 })
-export class RxFormModule { }
+export class NgRxformModule { }

@@ -19,12 +19,12 @@
       "dom"
     ],
     "paths": {
-      "rx-form": [
-        "dist/rx-form"
+      /* "@anand-kashyap/ng-rxform": [
+        "dist/anand-kashyap/ng-rxform"
       ],
-      "rx-form/*": [
-        "dist/rx-form/*"
-      ]
+      "@anand-kashyap/ng-rxform/*": [
+        "dist/anand-kashyap/ng-rxform/*"
+      ] */
     }
   },
   "angularCompilerOptions": {

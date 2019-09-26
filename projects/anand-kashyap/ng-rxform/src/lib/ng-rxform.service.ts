@@ -5,7 +5,8 @@ import { FormField, ValidMessages } from './models/form.model';
 @Injectable({
   providedIn: 'root'
 })
-export class RxFormService {
+export class NgRxformService {
+
   // Check Form Control Validation Errors
   getErrors(formControl: string, formGroup: FormGroup, fields: FormField[]): string {
     let errorField: FormField;
