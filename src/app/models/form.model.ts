@@ -2,7 +2,7 @@ export class FieldTypes {
   public static text = 'text';
   public static textbox = 'textbox';
   public static password = 'password';
-  public static dropdown = (options: string[]) => options;
+  public static dropdown(options: string[]) { return options; }
 }
 
 export class FormField {
@@ -23,7 +23,7 @@ export class FormField {
 export class Validator {
   public static required = 'required';
   public static email = 'email';
-  public static number = Validator.pattern(/[0-9]/);
+  public static number = Validator.pattern('/[0-9]/');
   public static min(min: number) {
     return ['min', min];
   }
@@ -36,7 +36,7 @@ export class Validator {
   public static maxlength(maxlength: number) {
     return ['maxlength', maxlength];
   }
-  public static pattern(regEx: RegExp) {
+  public static pattern(regEx: RegExp | string) {
     return ['pattern', regEx];
   }
 }

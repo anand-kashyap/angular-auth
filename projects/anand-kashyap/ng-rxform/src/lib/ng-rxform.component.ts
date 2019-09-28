@@ -9,9 +9,10 @@ import { NgRxformService } from './ng-rxform.service';
   styleUrls: ['./ng-rxform.component.scss']
 })
 export class NgRxformComponent implements OnInit {
+  @Input() theme = 'light';
   @Input() fields: FormField[] = [
     new FormField('email', ['required', 'email'], 'Email'),
-    new FormField('password', ['required'], 'password', 'Password')
+    new FormField('password', ['required'], 'Password')
   ];
   @Input() config: Config = {name: 'Login', submitLabel: 'Login'};
   @Input() otherButton = {label: 'Register', outData: 'formGroup'};

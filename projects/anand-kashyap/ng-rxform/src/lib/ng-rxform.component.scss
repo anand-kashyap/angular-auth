@@ -1,0 +1,16 @@
+@import './themes/common';
+
+.card-body {
+  @include themify($themes) {
+    background-color: themed('backgroundColor');
+    button {
+      // background-color: themed('backgroundColor');
+      &:focus{
+        box-shadow: none
+      }
+    }
+    label {
+      color: themed('textColor');
+    }
+  }
+}
