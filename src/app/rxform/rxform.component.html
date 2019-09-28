@@ -1,7 +1,7 @@
 <div class="row mt-4">
   <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-sm-10 offset-sm-1">
-    <div class="card mx-auto w-75" *ngIf="form" [ngClass]="{'theme-light': theme, 'theme-dark': !theme}">
-      <div class="card-header bg-primary text-light" (click)="switch()">{{config.name}}</div>
+    <div class="card mx-auto w-75" *ngIf="form" [ngClass]="{'theme-light': theme === 'light', 'theme-dark': theme === 'dark'}">
+      <div class="card-header bg-primary text-light">{{config.name}}</div>
       <div class="card-body">
         <form [formGroup]="form" (ngSubmit)="submitForm()">
           <div class="form-group" *ngFor="let f of fields">

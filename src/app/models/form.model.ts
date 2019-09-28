@@ -23,6 +23,7 @@ export class FormField {
 export class Validator {
   public static required = 'required';
   public static email = 'email';
+  public static number = Validator.pattern(/[0-9]/);
   public static min(min: number) {
     return ['min', min];
   }
@@ -48,6 +49,7 @@ export class ValidMessages {
     maxlength(n: number)  {return `must be greater than ${n} digits/characters`; },
     required: 'is required',
     invalid: 'is invalid',
+    number: 'must contain digits only',
     pattern: 'does not match pattern'
   };
 }

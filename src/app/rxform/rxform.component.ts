@@ -9,7 +9,7 @@ import { ValidateService } from '../validate.service';
   styleUrls: ['./rxform.component.scss']
 })
 export class RxformComponent implements OnInit {
-  theme = false;
+  @Input() theme = 'light';
   @Input() fields: FormField[] = [
     new FormField('email', ['required', 'email']),
     new FormField('password', ['required'], 'password')
@@ -35,10 +35,6 @@ export class RxformComponent implements OnInit {
     this.convertToControls();
   }
 
-  switch() {
-    this.theme = !this.theme;
-    console.log('switched');
-  }
   checkVal(val: Array<any> | string) {
     if (val instanceof Array) {
       return 'array';
