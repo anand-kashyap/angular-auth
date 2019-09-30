@@ -1,6 +1,6 @@
 {
   "name": "@anand-kashyap/ng-rxform",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "author": "Anand Kashyap",
   "repository": {
     "type": "git",
@@ -13,7 +13,8 @@
     "reactive dynamic forms",
     "form builder",
     "dynamic form builder",
-    "bootstrap"
+    "bootstrap",
+    "forms"
   ],
   "license": "MIT",
   "peerDependencies": {
