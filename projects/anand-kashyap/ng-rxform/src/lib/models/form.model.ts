@@ -56,11 +56,16 @@ export class ValidMessages {
 
 export class Config {
   name: string;
-  submitLabel?: string = name;
+  submitLabel?: string;
 }
 
 export class Link {
   type: string;
   label: string;
   url: string;
+}
+
+export class Theme {
+  public static light = 'light';
+  public static dark = 'dark';
 }

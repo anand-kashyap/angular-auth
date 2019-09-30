@@ -1,5 +1,5 @@
-# NgRxform
-Dynamic Reactive forms for Angular 6+ - easy to use, dev friendly and noob proof.
+# Ng-rxform
+Dynamic Reactive forms for Angular 6+. Easy to use, dev friendly and noob proof.
 
 ## Features
 - Bootstrap 4 design form
@@ -7,10 +7,10 @@ Dynamic Reactive forms for Angular 6+ - easy to use, dev friendly and noob proof
 - Choice of themes - light and dark
 - All types of validations on field including regex along with validation messages
 
-> **Note**: Users are encouraged to report any issues and features that they need.
+> **Note**: Users are encouraged to report any issues and features that they need. For reporting any issues/suggestions, [click here](https://forms.gle/da4UoREMAvqoSbZP8)
 
 ## Quick Usage
-1. Make sure you have installed `ngx-bootstrap` in your project.
+1. Make sure you have installed `ngx-bootstrap` in your project. If not, open terminal at root of your project and run `ng add ngx-bootstrap`. After this re-run `ng serve`.
 2. Install this package - npm i `@anand-kashyap/ng-rxform`.
 3. Go to app.module.ts and add this code
 ```typescript
@@ -58,14 +58,22 @@ export class AppComponent {
 | Name          | Description     | Values           | Default
 | ------------- |:--------------- |:------------:| -----:|
 | `fields`      | Add custom fields in form| `[new FormField('fieldName')]` | email and password fields   
-| `theme`      | Allows switching to available themes| 'light', 'dark' | 'light'  
-| `error`      | Dsiplay a custom error inside form| Any string type | ''  
-| `config`      | Set name of submit button label and form title| `{name: 'FormTitle', submitLabel: 'ButtonLabel'}: Config` | `{name: 'Login', submitLabel: 'Login'}`  
-| `otherButton`      | To be Added Soon| NA | NA  
-| `link`      | To be Added Soon| NA | NA  
+| `theme`      | Allows switching to available themes| Theme.light, Theme.dark | Theme.light  
+| `error`      | Display a custom error inside form| Any string type | ''  
+| `config`      | Set name of submit button label and form title| `{name: string, submitLabel: string}: Config` | `{name: 'Login', submitLabel: 'Login'}`  
+| `otherButton`  | Optional button beside submit button  | `{label: string}`| `{label: 'Register'}`   
+| `link`      | Optional link at bottom right of form | `{type: string, label: string, url: string}: Link` | `{type: 'link', label: 'Forgot Password?', url: '/forgot'}`  
 
-### Examples
-#### fields
+
+### Events
+
+| Name          | Description| Return parameters     | Syntax           | 
+| ------------- |:--------------- |:------------:| -----:|
+| `out`      | Event generated on submitting form| Returns all form field values| `(out)="methodName($event)"` | email and password fields   
+| `btnClick`      | Event generated on clicking other button| No parameters| `btnClick="methodName()"`
+
+## Examples
+### fields
 *component.ts*
 ```typescript
 import { FormField, Validator, FieldTypes } from '@anand-kashyap/ng-rxform';
@@ -87,10 +95,26 @@ fields: FormField[] = [
 <rx-form [fields]="fields" (out)="formSubmit($event)"></rx-form>
 ```
 
-#### theme
+### theme
+*component.ts*
+```typescript
+import { Component } from '@angular/core';
+import { Theme } from '@anand-kashyap/ng-rxform';
+
+@Component({
+//
+})
+export class AppComponent {
+  theme = Theme.dark; // or Theme.light
+
+  formSubmit(vals) {
+    console.log('form submit called', vals);
+  }
+}
+```
 *component.html*
 ```html
-<rx-form [theme]="'dark'"></rx-form> <!--set to dark theme--> 
+<rx-form [theme]="theme" (out)="formSubmit($event)"></rx-form> <!--set to dark theme--> 
 ```
 
-> ### Both Documentation and Package will receive regular updates with improvements/additions.
+> #### Both Documentation and Package will receive regular updates with improvements/additions. If any issues/suggestions, [click here](https://forms.gle/da4UoREMAvqoSbZP8)

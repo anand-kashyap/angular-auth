@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormField, Config, Link, FieldTypes } from './models/form.model';
+import { FormField, Config, Link, FieldTypes, Theme } from './models/form.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgRxformService } from './ng-rxform.service';
 
@@ -9,7 +9,7 @@ import { NgRxformService } from './ng-rxform.service';
   styleUrls: ['./ng-rxform.component.scss']
 })
 export class NgRxformComponent implements OnInit {
-  @Input() theme = 'light';
+  @Input() theme = Theme.light;
   @Input() fields: FormField[] = [
     new FormField('email', ['required', 'email'], 'Email'),
     new FormField('password', ['required'], 'Password')
@@ -28,7 +28,6 @@ export class NgRxformComponent implements OnInit {
   constructor(private validateService: NgRxformService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    console.log(this.fields);
     if (!this.config.submitLabel) {
       this.config.submitLabel = 'Submit';
     }
