@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormField, Config, Link, FieldTypes, Theme } from './models/form.model';
+import { FormField, Config, Link, FieldTypes, Theme, Templates, Template } from './models/form.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgRxformService } from './ng-rxform.service';
 
@@ -10,15 +10,11 @@ import { NgRxformService } from './ng-rxform.service';
 })
 export class NgRxformComponent implements OnInit {
   @Input() theme = Theme.light;
-  @Input() fields: FormField[] = [
-    new FormField('email', ['required', 'email'], 'Email'),
-    new FormField('password', ['required'], 'Password')
-  ];
-  @Input() config: Config = {name: 'Login', submitLabel: 'Login'};
-  @Input() otherButton = {label: 'Register', outData: 'formGroup'};
-  @Input() link: Link = {
-    type: 'link', label: 'Forgot Password?', url: '/forgot'
-  };
+  @Input() template: Template;
+  @Input() fields: FormField[];
+  @Input() config: Config;
+  @Input() otherButton: string;
+  @Input() link: Link;
   @Input() error: string;
   @Output() btnClick = new EventEmitter<any>();
   @Output() out = new EventEmitter<any>();
@@ -28,6 +24,21 @@ export class NgRxformComponent implements OnInit {
   constructor(private validateService: NgRxformService, private fb: FormBuilder) { }
 
   ngOnInit() {
+    if (!this.template) {
+      this.template = Templates.Login;
+    }
+    if (!this.fields) {
+    this.fields = this.template.fields;
+    }
+    if (!this.config) {
+    this.config = this.template.config;
+    }
+    if (!this.otherButton) {
+    this.otherButton = this.template.otherButton;
+    }
+    if (!this.link && this.template.link) {
+    this.link = this.template.link;
+    }
     if (!this.config.submitLabel) {
       this.config.submitLabel = 'Submit';
     }
@@ -87,11 +98,6 @@ export class NgRxformComponent implements OnInit {
   }
 
   otherClick() {
-    if (this.otherButton.outData) {
-      if (this.otherButton.outData === 'formGroup') {
-        return this.btnClick.emit(this.form);
-      }
-    }
-    return this.btnClick.emit();
+    return this.btnClick.emit(this.form);
   }
 }

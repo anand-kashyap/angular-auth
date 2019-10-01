@@ -1,3 +1,6 @@
-<rx-form [theme]="theme" [error]="err" [config]="config" (btnClick)="otherClick($event)" (out)="externaLogin($event)"></rx-form>
-<!-- <app-rxform [theme]="'dark'" [error]="err" [config]="config" [fields]="fields" (btnClick)="otherClick($event)" (out)="externaLogin($event)"></app-rxform> -->
-<!-- <router-outlet></router-outlet> -->
+<div class="row mt-4">
+  <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-sm-10 offset-sm-1">
+  <rx-form [theme]="theme" [template]="template" [error]="err" (btnClick)="otherClick($event)" (out)="externaLogin($event)"></rx-form>
+  <!-- <router-outlet></router-outlet> -->
+</div>
+</div>

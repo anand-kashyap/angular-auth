@@ -30,7 +30,11 @@ export class NgRxformService {
             error = ValidMessages.m.invalid;
           }
           if (err === 'pattern') {
-            error += ' ' + errF[1];
+            if (errF[1].toString() === '/[0-9]/') {
+              error = ValidMessages.m.number;
+            } else {
+              error += ' ' + errF[1];
+            }
           }
           if (err === 'minlength' || err === 'maxlength') {
             error = ValidMessages.m[err](parseInt(errF[1], 10));

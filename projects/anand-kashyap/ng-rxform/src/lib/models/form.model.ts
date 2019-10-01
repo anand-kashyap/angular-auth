@@ -69,3 +69,35 @@ export class Theme {
   public static light = 'light';
   public static dark = 'dark';
 }
+
+export class Template {
+    fields: FormField[];
+    config: Config;
+    otherButton: string;
+    link?: Link;
+}
+
+export class Templates {
+  public static Login: Template = {
+    fields: [
+      new FormField('email', [Validator.required, Validator.email], 'Email'),
+      new FormField('password', [Validator.required, Validator.minlength(8)], 'Password')
+    ],
+    config: {name: 'Login', submitLabel: 'Login'},
+    otherButton: 'Register',
+    link: {
+      type: 'link', label: 'Forgot Password?', url: '/forgot'
+    }
+  };
+  public static Register: Template = {
+    fields: [
+      new FormField('name', [Validator.required, Validator.minlength(5)], 'Name'),
+      new FormField('email', [Validator.required, Validator.email], 'Email'),
+      new FormField('password', [Validator.required, Validator.minlength(8)], 'Password'),
+      new FormField('confirmPassword', [Validator.required, Validator.minlength(8)], 'Confirm Password'),
+      new FormField('phone', [Validator.minlength(10), Validator.number], 'Phone Number'),
+    ],
+    config: {name: 'Register', submitLabel: 'Register'},
+    otherButton: 'Already a User? Log in',
+  };
+}

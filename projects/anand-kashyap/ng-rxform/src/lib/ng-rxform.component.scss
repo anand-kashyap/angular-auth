@@ -5,9 +5,9 @@
     background-color: themed('backgroundColor');
     button {
       // background-color: themed('backgroundColor');
-      &:focus{
-        box-shadow: none
-      }
+    }
+    button:focus, input:focus{
+      box-shadow: themed('boxShadow');
     }
     label {
       color: themed('textColor');
