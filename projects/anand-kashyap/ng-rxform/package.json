@@ -1,6 +1,6 @@
 {
   "name": "@anand-kashyap/ng-rxform",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Anand Kashyap",
   "repository": {
     "type": "git",
@@ -9,6 +9,8 @@
   "description": "Dynamic reactive forms with validation messages enabled on bootstrap 4",
   "keywords": [
     "angular",
+    "angular forms",
+    "form library",
     "reactive forms",
     "reactive dynamic forms",
     "form builder",
